@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Milas Mjere d.o.o. | PVC i ALU Stolarija Zagreb | Prozori, Vrata, Klizne
+      Stijene
+    </title>
+    <meta
+      name="description"
+      content="Proizvodnja i ugradnja vrhunske PVC i ALU stolarije u Zagrebu. Prozori, vrata, klizne stijene i rolete. Besplatna izmjera i ponuda. 10+ godina iskustva. Kontakt: 098 901 9220"
+    />
+    <meta
+      name="keywords"
+      content="PVC stolarija, ALU stolarija, prozori Zagreb, vrata Zagreb, klizne stijene, rolete, PVC prozori, ALU prozori, ugradnja prozora, Milas Mjere"
+    />
+    <meta name="author" content="Milas Mjere d.o.o." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.milas-mjere.hr/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.milas-mjere.hr/" />
+    <meta
+      property="og:title"
+      content="Milas Mjere d.o.o. | PVC i ALU Stolarija Zagreb"
+    />
+    <meta
+      property="og:description"
+      content="Proizvodnja i ugradnja vrhunske PVC i ALU stolarije. Besplatna izmjera i ponuda. 10+ godina iskustva."
+    />
+    <meta
+      property="og:image"
+      content="https://www.milas-mjere.hr/images/og-image.jpg"
+    />
+
+    <!-- Structured Data - Local Business -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Milas Mjere d.o.o.",
+        "description": "Proizvodnja i ugradnja PVC i ALU stolarije",
+        "url": "https://www.milas-mjere.hr",
+        "telephone": "+385989019220",
+        "email": "info@milas-mjere.hr",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Zagreb",
+          "addressCountry": "HR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "45.8150",
+          "longitude": "15.9819"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        },
+        "priceRange": "$$",
+        "image": "https://www.milas-mjere.hr/images/logo.png",
+        "sameAs": ["https://www.facebook.com/milasmjere"]
+      }
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --dark: #0a0a0a;
+        --accent: #2563eb;
+        --accent-light: #3b82f6;
+        --accent-dark: #1e40af;
+        --gray-accent: #64748b;
+        --light: #ffffff;
+        --gray: #f5f5f5;
+        --gray-mid: #666;
+        --shadow: rgba(0, 0, 0, 0.1);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--dark);
+        background: var(--light);
+        overflow-x: hidden;
+      }
+
+      /* Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .header-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--dark);
+        text-decoration: none;
+      }
+
+      .logo img {
+        height: 45px;
+        width: auto;
+      }
+
+      .logo .title {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+      }
+
+      .logo .tag {
+        font-size: 11px !important;
+        color: var(--gray-mid) !important;
+      }
+
+      .nav {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .nav a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        font-size: 15px;
+        transition: color 0.2s;
+        position: relative;
+      }
+
+      .nav a:hover {
+        color: var(--accent);
+      }
+
+      .nav a:not(.cta-btn)::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s;
+      }
+
+      .nav a:not(.cta-btn):hover::after {
+        width: 100%;
+      }
+
+      .cta-btn {
+        background: var(--accent);
+        color: var(--light) !important;
+        padding: 12px 28px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .cta-btn:hover {
+        background: var(--accent-light);
+        transform: translateY(-2px);
+        box-shadow: 0 15px 40px rgba(37, 99, 235, 0.3);
+      }
+
+      /* Buttons */
+
+      .btn {
+        padding: 18px 36px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        transition: all 0.3s;
+        border: 2px solid transparent;
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: var(--light);
+      }
+
+      .btn-primary:hover {
+        background: var(--accent-light);
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(37, 99, 235, 0.3);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--dark);
+        border-color: var(--dark);
+      }
+
+      .btn-secondary:hover {
+        background: var(--dark);
+        color: var(--light);
+        transform: translateY(-3px);
+      }
+
+      /* Services */
+
+      .services-hero {
+        padding: 120px 0 80px;
+        max-width: 900px;
+      }
+
+      .services-hero h1 {
+        font-size: clamp(32px, 5vw, 48px);
+        margin-bottom: 16px;
+      }
+
+      .services-hero p {
+        font-size: 18px;
+        color: rgba(0, 0, 0, 0.65);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 48px;
+        margin: 120px 0;
+      }
+
+      .service-card {
+        padding: 32px;
+        border-radius: 16px;
+        background: white;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 32px 60px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-card h3 {
+        margin-top: 24px;
+        margin-bottom: 12px;
+      }
+
+      .services-details details {
+        padding: 24px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .services-details summary {
+        cursor: pointer;
+        font-weight: 600;
+        list-style: none;
+      }
+
+      .services-details summary::marker {
+        display: none;
+      }
+
+      .services-details details[open] summary {
+        margin-bottom: 12px;
+      }
+
+      .why-us ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+        margin: 120px 0;
+      }
+
+      .why-us li {
+        font-size: 16px;
+      }
+
+      .process ol {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 32px;
+      }
+
+      .process li {
+        padding: 24px;
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.03);
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 120px 40px;
+        background: linear-gradient(
+          135deg,
+          var(--accent) 0%,
+          var(--accent-light) 100%
+        );
+        color: var(--light);
+        text-align: center;
+      }
+
+      .cta-inner {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .cta-inner h2 {
+        font-size: 56px;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 24px;
+        letter-spacing: -1px;
+      }
+
+      .cta-inner p {
+        font-size: 20px;
+        margin-bottom: 40px;
+        opacity: 0.95;
+      }
+
+      .cta-inner .btn {
+        background: white;
+        color: var(--accent);
+        font-size: 18px;
+        padding: 20px 48px;
+        border: 2px solid transparent;
+      }
+
+      .cta-inner .btn:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .contact-info {
+        margin-top: 48px;
+        padding-top: 48px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        display: flex;
+        justify-content: center;
+        gap: 64px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .contact-item a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 64px 40px 32px;
+        background: var(--dark);
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .footer-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 64px;
+        margin-bottom: 48px;
+      }
+
+      .footer-brand h3 {
+        color: var(--light);
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+
+      .footer-brand p {
+        line-height: 1.8;
+        margin-bottom: 24px;
+      }
+
+      .footer-col h4 {
+        color: var(--light);
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .footer-col a {
+        display: block;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        margin-bottom: 12px;
+        transition: color 0.2s;
+      }
+
+      .footer-col a:hover {
+        color: var(--accent);
+      }
+
+      .footer-bottom {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        font-size: 14px;
+      }
+
+      /* Mobile */
+      @media (max-width: 1024px) {
+        .hero-content {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+
+        .hero-text h1 {
+          font-size: 48px;
+        }
+
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-inner {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .nav {
+          display: none;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <img src="img/jus_logo.png" alt="Milas Mjere logo" />
+          <div class="title">
+            <span>Milas Mjere</span>
+            <span class="tag">Proizvodnja i ugradnja PVC i ALU stolarije</span>
+          </div>
+        </a>
+        <nav class="nav">
+          <a href="services.html">Usluge</a>
+          <a href="gallery.html">Galerija</a>
+          <a href="#about">O nama</a>
+          <a href="#contact" class="cta-btn">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="services-hero">
+        <h1>Naše usluge</h1>
+        <p>Kvalitetna izrada i ugradnja PVC i ALU stolarije po mjeri.</p>
+      </section>
+
+      <section class="services-grid">
+        <article class="service-card">
+          <div class="service-icon">
+            <!-- animated window / door icon -->
+          </div>
+          <h3>PVC stolarija</h3>
+          <p>Energetski učinkovita rješenja za domove i poslovne prostore.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon"></div>
+          <h3>ALU stolarija</h3>
+          <p>Moderna aluminijska rješenja visoke izdržljivosti.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon"></div>
+          <h3>Klizne stijene</h3>
+          <p>Velike staklene površine s glatkim klizanjem.</p>
+        </article>
+      </section>
+
+      <section class="services-details">
+        <details>
+          <summary>PVC stolarija</summary>
+          <p>
+            Izrada i ugradnja PVC prozora i vrata po mjeri, s naglaskom na
+            toplinsku i zvučnu izolaciju.
+          </p>
+        </details>
+
+        <details>
+          <summary>ALU stolarija</summary>
+          <p>
+            Aluminijska stolarija za moderne objekte, otporna na vremenske
+            uvjete i dugotrajnog vijeka.
+          </p>
+        </details>
+      </section>
+
+      <section class="why-us">
+        <ul>
+          <li>✔ Dugogodišnje iskustvo</li>
+          <li>✔ Kvalitetni materijali</li>
+          <li>✔ Precizna ugradnja</li>
+          <li>✔ Garancija na radove</li>
+        </ul>
+      </section>
+
+      <section class="process">
+        <ol>
+          <li>Upit i savjetovanje</li>
+          <li>Mjerenje i ponuda</li>
+          <li>Izrada</li>
+          <li>Ugradnja</li>
+        </ol>
+      </section>
+
+      <section class="services-cta">
+        <h2>Zatražite ponudu</h2>
+        <p>Kontaktirajte nas i odgovorit ćemo u najkraćem roku.</p>
+        <a href="/kontakt" class="btn-primary">Kontakt</a>
+      </section>
+
+      <section id="contact" class="cta-section">
+        <div class="cta-inner">
+          <h2>Spremni za promjenu?</h2>
+          <p>
+            Kontaktirajte nas za besplatnu ponudu i izmjeru. Bez obveze, brz
+            odgovor.
+          </p>
+          <a
+            href="tel:+385989019220"
+            class="btn"
+            aria-label="Nazovite Milas Mjere"
+            >+385 98 901 9220</a
+          >
+
+          <div class="contact-info">
+            <div class="contact-item">
+              <span>📞</span>
+              <a href="tel:+385989019220">098 901 9220</a>
+            </div>
+            <div class="contact-item">
+              <span>✉️</span>
+              <a href="mailto:info@milas-mjere.hr">info@milas-mjere.hr</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h3>Milas Mjere d.o.o.</h3>
+          <p>
+            Obiteljska tvrtka fokusirana na kvalitetu izrade i zadovoljne
+            klijente. Više od 10 godina iskustva u proizvodnji PVC i ALU
+            stolarije.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Proizvodi</h4>
+          <a href="services.html#pvc-prozori">PVC prozori</a>
+          <a href="services.html#pvc-vrata">PVC vrata</a>
+          <a href="services.html#klizne-stijene">Klizne stijene</a>
+          <a href="services.html#rolete">ALU rolete</a>
+        </div>
+        <div class="footer-col">
+          <h4>Tvrtka</h4>
+          <a href="#about">O nama</a>
+          <a href="gallery.html">Galerija</a>
+          <a href="#contact">Kontakt</a>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <a href="tel:+385989019220">+385 98 901 9220</a>
+          <a href="mailto:info@milas-mjere.hr">info@milas-mjere.hr</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Milas Mjere d.o.o. — Sva prava pridržana</p>
+      </div>
+    </footer>
+  </body>
+</html>
