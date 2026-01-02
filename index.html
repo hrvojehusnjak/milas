@@ -876,7 +876,7 @@
         background: rgba(255, 255, 255, 0.05);
         display: flex;
         position: relative;
-        overflow: hidden; /* important for sliding */
+        overflow: hidden;
       }
 
       .sliding-door-pane {
@@ -935,7 +935,7 @@
       }
 
       /* Mobile */
-      @media (max-width: 1024px) {
+      @media (min-width: 481px) and (max-width: 1024px) {
         .hero-content {
           grid-template-columns: 1fr;
           gap: 48px;
@@ -972,13 +972,48 @@
           gap: 20px;
         }
       }
+
+      @media (max-width: 480px) {
+        .title {
+          display: none !important;
+        }
+
+        .hero-content {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-ctas {
+          flex-direction: column;
+        }
+
+        .hero-stats {
+          flex-direction: column;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-info {
+          flex-direction: column;
+          gap: 24px;
+        }
+      }
     </style>
   </head>
   <body>
     <header class="header">
       <div class="header-content">
         <a href="index.html" class="logo">
-          <img src="img/jus_logo.png" alt="Milas Mjere logo" />
+          <img src="img/mm.png" alt="Milas Mjere logo" />
           <div class="title">
             <span>Milas Mjere</span>
             <span class="tag">Proizvodnja i ugradnja PVC i ALU stolarije</span>
@@ -1059,7 +1094,7 @@
                   </div>
                 </div>
               </div>
-              <h3>PVC prozori & vrata</h3>
+              <h3>PVC prozori i vrata</h3>
               <p>Energetski učinkoviti prozori i vrata vrhunske izolacije</p>
             </a>
             <a href="services.html#klizne-stijene" class="service-card">

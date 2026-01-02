@@ -445,7 +445,7 @@
       }
 
       /* Mobile */
-      @media (max-width: 1024px) {
+      @media (min-width: 481px) and (max-width: 1024px) {
         .hero-content {
           grid-template-columns: 1fr;
           gap: 48px;
@@ -482,13 +482,19 @@
           gap: 20px;
         }
       }
+
+      @media (max-width: 480px) {
+        .title {
+          display: none !important;
+        }
+      }
     </style>
   </head>
   <body>
     <header class="header">
       <div class="header-content">
         <a href="index.html" class="logo">
-          <img src="img/jus_logo.png" alt="Milas Mjere logo" />
+          <img src="img/mm.png" alt="Milas Mjere logo" />
           <div class="title">
             <span>Milas Mjere</span>
             <span class="tag">Proizvodnja i ugradnja PVC i ALU stolarije</span>

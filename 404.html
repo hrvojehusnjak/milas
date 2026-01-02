@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stranica nije pronađena | 404</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --dark: #0a0a0a;
+        --accent: #2563eb;
+        --accent-light: #3b82f6;
+        --accent-dark: #1e40af;
+        --gray-accent: #64748b;
+        --light: #ffffff;
+        --gray: #f5f5f5;
+        --gray-mid: #666;
+        --shadow: rgba(0, 0, 0, 0.1);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--dark);
+        background: var(--light);
+        overflow-x: hidden;
+      }
+
+      .btn {
+        padding: 18px 36px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        transition: all 0.3s;
+        border: 2px solid transparent;
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: var(--light);
+      }
+
+      .btn-primary:hover {
+        background: var(--accent-light);
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(37, 99, 235, 0.3);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--dark);
+        border-color: var(--dark);
+      }
+
+      .btn-secondary:hover {
+        background: var(--dark);
+        color: var(--light);
+        transform: translateY(-3px);
+      }
+
+      /* 404 PAGE */
+
+      .page-404 {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(245, 247, 250, 1) 100%
+        );
+      }
+
+      .error-404 {
+        text-align: center;
+        max-width: 480px;
+        padding: 48px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .error-visual {
+        margin-bottom: 48px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .doors {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        pointer-events: none;
+        display: flex;
+      }
+
+      .door {
+        width: 50%;
+        height: 100%;
+        background: transparent;
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.08);
+        backdrop-filter: blur(4px);
+        background: linear-gradient(
+          180deg,
+          rgba(180, 205, 230, 0.28) 0%,
+          rgba(160, 190, 220, 0.22) 100%
+        );
+      }
+
+      .door::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        /* background: rgba(0, 0, 0, 0.08); */
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0.35),
+          rgba(255, 255, 255, 0.08) 45%,
+          rgba(255, 255, 255, 0.18)
+        );
+      }
+
+      .left::after {
+        right: 0;
+      }
+
+      .right::after {
+        left: 0;
+      }
+
+      .glass {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .glass::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: calc(50% - 120px);
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.25) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: skewX(-25deg);
+        pointer-events: none;
+        animation: light-sweep 1.6s ease forwards;
+        animation-delay: 0.25s;
+      }
+
+      @keyframes light-sweep {
+        0% {
+          left: -50%;
+        }
+        100% {
+          left: 150%;
+        }
+      }
+
+      .door-border {
+        width: 120px;
+        height: 100%;
+        background-color: rgb(14, 14, 14);
+        display: flex;
+        align-items: center;
+      }
+
+      .page-404 .door.left {
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.08),
+          8px 0 24px rgba(0, 0, 0, 0.12);
+        animation: slide-left 1.6s cubic-bezier(0.77, 0, 0.18, 1) 0.25s forwards;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .page-404 .door.right {
+        box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.08),
+          -8px 0 24px rgba(0, 0, 0, 0.12);
+        animation: slide-right 1.6s cubic-bezier(0.77, 0, 0.18, 1) 0.25s
+          forwards;
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      .handle {
+        height: 300px;
+        width: 40px;
+        background-color: #5f5a5a;
+        animation: turn-handle 1s cubic-bezier(0.77, 0, 0.18, 1) 0.25s forwards;
+        transform-origin: left center;
+        border-radius: 2px;
+        transform: translateX(30px);
+      }
+
+      @keyframes slide-left {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-40%);
+        }
+      }
+
+      @keyframes slide-right {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(40%);
+        }
+      }
+
+      @keyframes turn-handle {
+        0% {
+          transform: translateX(30px) rotate(0deg);
+        }
+        100% {
+          transform: translateX(160px) rotate(90deg);
+        }
+      }
+
+      .error-404 h1 {
+        font-size: 96px;
+        margin-bottom: 16px;
+        letter-spacing: -2px;
+      }
+
+      .error-404 p {
+        color: rgba(0, 0, 0, 0.6);
+        margin-bottom: 32px;
+      }
+
+      .error-actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      .error-hint {
+        margin-top: 16px;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.45);
+      }
+
+      .logo {
+        width: 400px;
+        margin: 48px;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="page-404">
+    <main class="error-404">
+      <div class="error-visual">
+        <div class="doors">
+          <div class="door left">
+            <div class="glass"></div>
+            <div class="door-border"></div>
+          </div>
+          <div class="door right">
+            <div class="door-border">
+              <div class="handle"></div>
+            </div>
+            <div class="glass"></div>
+          </div>
+        </div>
+      </div>
+
+      <h1>404</h1>
+      <p>Stranica koju tražite ne postoji ili je premještena.</p>
+      <p class="error-hint">
+        Želite li se vratiti na
+        <a href="javascript:history.back()">prethodnu stranicu</a>?.
+      </p>
+
+      <div class="error-actions">
+        <a href="/" class="btn btn-primary">Početna</a>
+        <a href="/usluge" class="btn btn-secondary">Usluge</a>
+      </div>
+
+      <div class="logo">
+        <img src="img/logo.jpg" alt="Milas Mjere logo" />
+      </div>
+    </main>
+  </body>
+</html>
