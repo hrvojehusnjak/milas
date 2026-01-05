@@ -71,6 +71,18 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        const page = location.pathname.split("/").pop();
+
+        document.querySelectorAll("[data-page]").forEach((link) => {
+          if (page.includes(link.dataset.page)) {
+            link.classList.add("active");
+          }
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
         const header = document.querySelector(".header");
         window.addEventListener("scroll", () => {
           header.classList.toggle("scrolled", window.scrollY > 20);
@@ -193,6 +205,15 @@
 
       .nav a:hover {
         color: var(--accent);
+      }
+
+      .nav a.active,
+      .mobile-nav a.active {
+        color: var(--accent);
+      }
+
+      .nav a.active::after {
+        width: 100%;
       }
 
       .nav a:not(.cta-btn)::after {
@@ -544,8 +565,8 @@
           </div>
         </a>
         <nav class="nav">
-          <a href="services.html">Usluge</a>
-          <a href="gallery.html">Galerija</a>
+          <a href="services.html" data-page="services">Usluge</a>
+          <a href="gallery.html" data-page="gallery">Galerija</a>
           <a href="#contact" class="cta-btn">Kontakt</a>
         </nav>
       </div>

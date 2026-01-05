@@ -15,6 +15,32 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
     <link rel="manifest" href="site.webmanifest" />
 
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const doors = document.querySelector(".doors");
+        const handle = document.querySelector(".handle");
+        const glass = document.querySelector(".glass");
+
+        document.querySelectorAll("a[href]").forEach((link) => {
+          const url = link.getAttribute("href");
+
+          // Skip anchors, external links, new tabs
+          if (!url || url.startsWith("#") || link.target === "_blank") return;
+
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            doors.classList.add("is-closing");
+            handle.classList.add("is-closing");
+            glass.classList.add("is-closing");
+
+            setTimeout(() => {
+              window.location.href = url;
+            }, 800);
+          });
+        });
+      });
+    </script>
+
     <style>
       * {
         margin: 0;
@@ -32,6 +58,13 @@
         --gray: #f5f5f5;
         --gray-mid: #666;
         --shadow: rgba(0, 0, 0, 0.1);
+      }
+
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
       }
 
       body {
@@ -78,7 +111,7 @@
       /* 404 PAGE */
 
       .page-404 {
-        min-height: 100vh;
+        min-height: 100svh;
         display: grid;
         place-items: center;
         background: linear-gradient(
@@ -103,12 +136,41 @@
         justify-content: center;
       }
 
-      .doors {
+      .page-transition {
         position: fixed;
-        inset: 0;
+        top: 50%;
+        left: 50%;
+        width: 100vw;
+        height: 100vh;
+        transform: translate(-50%, -50%);
         z-index: 10;
         pointer-events: none;
+        perspective: 1200px;
+        perspective-origin: center;
+      }
+
+      .doors {
+        height: 100%;
+        width: 100%;
         display: flex;
+        transform-style: preserve-3d;
+      }
+
+      .doors.is-closing {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .doors.is-closing .door {
+        animation-timing-function: cubic-bezier(0.6, 0, 0.2, 1);
+      }
+
+      .doors.is-closing .door.left {
+        animation: slide-in-left 0.8s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+      }
+
+      .doors.is-closing .door.right {
+        animation: slide-in-right 0.8s cubic-bezier(0.77, 0, 0.18, 1) forwards;
       }
 
       .door {
@@ -122,6 +184,7 @@
           rgba(180, 205, 230, 0.28) 0%,
           rgba(160, 190, 220, 0.22) 100%
         );
+        transform-origin: center center;
       }
 
       .door::after {
@@ -154,6 +217,11 @@
         overflow: hidden;
       }
 
+      .glass.is-closing::after {
+        animation: light-sweep-reverse 0.8s ease forwards;
+        animation-delay: 0.25s;
+      }
+
       .glass::after {
         content: "";
         position: absolute;
@@ -169,7 +237,7 @@
         );
         transform: skewX(-25deg);
         pointer-events: none;
-        animation: light-sweep 1.6s ease forwards;
+        animation: light-sweep 0.8s ease forwards;
         animation-delay: 0.25s;
       }
 
@@ -179,6 +247,15 @@
         }
         100% {
           left: 150%;
+        }
+      }
+
+      @keyframes light-sweep-reverse {
+        0% {
+          left: 150%;
+        }
+        100% {
+          left: -50%;
         }
       }
 
@@ -211,36 +288,69 @@
         height: 300px;
         width: 40px;
         background-color: #5f5a5a;
-        animation: turn-handle 1s cubic-bezier(0.77, 0, 0.18, 1) 0.25s forwards;
-        transform-origin: left center;
+        animation: turn-handle 0.6s cubic-bezier(0.77, 0, 0.18, 1) 0.25s
+          forwards;
+        transform-origin: left top;
         border-radius: 2px;
-        transform: translateX(30px);
+        transform: translate(30px, 100px);
+      }
+
+      .handle.is-closing {
+        animation: turn-handle-reverse 0.6s cubic-bezier(0.77, 0, 0.18, 1)
+          forwards;
       }
 
       @keyframes slide-left {
         0% {
-          transform: translateX(0);
+          transform: translateX(0) translateZ(0);
         }
         100% {
-          transform: translateX(-40%);
+          transform: translateX(-40%) translateZ(60px);
         }
       }
 
       @keyframes slide-right {
         0% {
-          transform: translateX(0);
+          transform: translateX(0) translateZ(0);
         }
         100% {
-          transform: translateX(40%);
+          transform: translateX(40%) translateZ(60px);
+        }
+      }
+
+      @keyframes slide-in-left {
+        0% {
+          transform: translateX(-40%) translateZ(60px);
+        }
+        100% {
+          transform: translateX(0) translateZ(0);
+        }
+      }
+
+      @keyframes slide-in-right {
+        0% {
+          transform: translateX(40%) translateZ(60px);
+        }
+        100% {
+          transform: translateX(0) translateZ(0);
         }
       }
 
       @keyframes turn-handle {
         0% {
-          transform: translateX(30px) rotate(0deg);
+          transform: translate(30px, 100px) rotate(0deg);
         }
         100% {
-          transform: translateX(160px) rotate(90deg);
+          transform: translate(30px, 100px) rotate(-90deg);
+        }
+      }
+
+      @keyframes turn-handle-reverse {
+        0% {
+          transform: translate(30px, 100px) rotate(-90deg);
+        }
+        100% {
+          transform: translate(30px, 100px) rotate(0deg);
         }
       }
 
@@ -276,26 +386,59 @@
           width: 100%;
         }
       }
+
+      @media (max-width: 480px) {
+        .logo {
+          width: 100%;
+        }
+
+        .page-404 .door {
+          width: 50vw;
+        }
+
+        @keyframes slide-left {
+          to {
+            transform: translateX(-105%) translateZ(-40px);
+          }
+        }
+
+        @keyframes slide-right {
+          to {
+            transform: translateX(105%) translateZ(40px);
+          }
+        }
+
+        @keyframes slide-in-left {
+          from {
+            transform: translateX(-105%) translateZ(-40px);
+          }
+        }
+
+        @keyframes slide-in-right {
+          from {
+            transform: translateX(105%) translateZ(40px);
+          }
+        }
+      }
     </style>
   </head>
 
   <body class="page-404">
-    <main class="error-404">
-      <div class="error-visual">
-        <div class="doors">
-          <div class="door left">
-            <div class="glass"></div>
-            <div class="door-border"></div>
+    <div class="page-transition">
+      <div class="doors">
+        <div class="door left">
+          <div class="glass"></div>
+          <div class="door-border"></div>
+        </div>
+        <div class="door right">
+          <div class="door-border">
+            <div class="handle"></div>
           </div>
-          <div class="door right">
-            <div class="door-border">
-              <div class="handle"></div>
-            </div>
-            <div class="glass"></div>
-          </div>
+          <div class="glass"></div>
         </div>
       </div>
-
+    </div>
+    <main class="error-404">
       <h1>404</h1>
       <p>Stranica koju tražite ne postoji ili je premještena.</p>
       <p class="error-hint">
