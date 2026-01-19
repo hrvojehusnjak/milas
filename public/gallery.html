@@ -69,6 +69,8 @@
       }
     </script>
 
+    <script src="/js/gallery.js" defer></script>
+
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const header = document.querySelector(".header");
@@ -210,27 +212,27 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const filters = document.querySelectorAll(".filter");
-        const projects = document.querySelectorAll(".project");
+        document
+          .querySelector(".project-filters")
+          .addEventListener("click", (e) => {
+            const btn = e.target.closest(".filter");
+            if (!btn) return;
 
-        filters.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            filters.forEach((b) => b.classList.remove("active"));
+            document
+              .querySelectorAll(".filter")
+              .forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
 
             const filter = btn.dataset.filter;
 
-            projects.forEach((project) => {
+            document.querySelectorAll(".project").forEach((project) => {
               const cats = project.dataset.category;
-
-              if (filter === "all" || cats.includes(filter)) {
-                project.classList.remove("hidden");
-              } else {
-                project.classList.add("hidden");
-              }
+              project.classList.toggle(
+                "hidden",
+                filter !== "all" && !cats.includes(filter)
+              );
             });
           });
-        });
 
         const scrollBtn = document.querySelector(".scroll-top");
         if (!scrollBtn) return;
@@ -467,13 +469,8 @@
         color: white;
       }
 
-      .project {
-        transition: opacity 0.4s ease, transform 0.4s ease;
-      }
-
       .project.hidden {
         opacity: 0;
-        transform: scale(0.95);
         pointer-events: none;
         position: absolute;
       }
@@ -872,7 +869,7 @@
   <body>
     <header class="header">
       <div class="header-content">
-        <a href="index.html" class="logo">
+        <a href="/" class="logo">
           <img src="img/mm.png" alt="Milas Mjere logo" />
           <div class="title">
             <span>Milas Mjere</span>
@@ -880,8 +877,8 @@
           </div>
         </a>
         <nav class="nav">
-          <a href="services.html" data-page="services">Usluge</a>
-          <a href="gallery.html" data-page="gallery">Galerija</a>
+          <a href="/usluge" data-page="services">Usluge</a>
+          <a href="/galerija" data-page="gallery">Galerija</a>
           <a href="#contact" class="cta-btn">Kontakt</a>
         </nav>
       </div>
@@ -895,8 +892,7 @@
           <button class="filter" data-filter="alu">ALU</button>
           <button class="filter" data-filter="sliding">Klizne stijene</button>
         </div>
-        <div class="projects-inner">
-          <article class="project" id="project1" data-category="sliding pvc">
+        <div class="projects-inner" id="projects-container">
             <div class="project-gallery">
               <img
                 class="project-main"
@@ -1114,7 +1110,7 @@
                 <li>Ugradnja i završna obrada</li>
               </ul>
             </div>
-          </article>
+          </article> -->
         </div>
       </section>
 
@@ -1160,14 +1156,14 @@
         </div>
         <div class="footer-col">
           <h4>Proizvodi</h4>
-          <a href="services.html#pvc-prozori">PVC prozori</a>
-          <a href="services.html#pvc-vrata">PVC vrata</a>
-          <a href="services.html#klizne-stijene">Klizne stijene</a>
-          <a href="services.html#rolete">ALU rolete</a>
+          <a href="/usluge#pvc-prozori">PVC prozori</a>
+          <a href="/usluge#pvc-vrata">PVC vrata</a>
+          <a href="/usluge#klizne-stijene">Klizne stijene</a>
+          <a href="/usluge#rolete">ALU rolete</a>
         </div>
         <div class="footer-col">
           <h4>Tvrtka</h4>
-          <a href="gallery.html">Galerija</a>
+          <a href="/galerija">Galerija</a>
           <a href="#contact">Kontakt</a>
         </div>
         <div class="footer-col">
